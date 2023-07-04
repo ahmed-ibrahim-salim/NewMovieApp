@@ -30,4 +30,16 @@ class RequestsHandler: RequestHandlerProtocol {
             completionHandler(response)
         }
     }
+    
+    
+    func getMovieById(params: [String : Any],
+                             completionHandler: @escaping (AFResult<Movie>) -> ()){
+        
+        print(params, "getMovieById")
+        network?.performGet(Routers.movieById(para: params),
+                            Movie.self){
+            response in
+            completionHandler(response)
+        }
+    }
 }

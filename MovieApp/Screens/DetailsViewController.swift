@@ -17,7 +17,13 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var movieFullDescription: UILabel!
     
-    var movieDetails: Movie?
+    private var movieDetails: Movie?{
+        didSet{
+            displayDataInTheView()
+        }
+    }
+    
+    var movieId: Int?
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -26,6 +32,7 @@ class DetailsViewController: UIViewController {
         displayDataInTheView()
         watchBtn.layer.cornerRadius = 15
         
+        getMovie(by: movieId ?? 1)
     }
     
     @IBAction func watchMovieBtnPressed(_ sender: Any) {
@@ -37,65 +44,33 @@ class DetailsViewController: UIViewController {
 //        }
         
     }
-    
-//    func getMovie(id: String){
-//        
-//        let apiKey = "80adae09b523d3037018900367438854"
-//        
-//        let baseURL = "https://api.themoviedb.org/3/movie/"
-//        let imagebaseURL = "https://image.tmdb.org/t/p/w500/"
-//        
-//        guard let url = URL(string: "\(baseURL)popular?api_key=\(apiKey)&page=\(page)") else {
-//#if DEBUG
-//            print("invalid url, please check url")
-//#endif
-//            return
-//        }
-//        
-//        let headers: [String : Any] = [
-//            "Accept": "application/json",
-//            "Authorization" : "Bearer \(apiKey)"
-//        ]
-//        
-//#if DEBUG
-//        print("Request headers",headers)
-//#endif
-//        
-//        AF.request(url,
-//                   method: .get,
-//                   encoding: URLEncoding.default,
-//                   headers: headers)
-//        .responseDecodable(of: MoviesModel.self) {
-//            
-//            response in
-//            guard let data = response.data else {return}
-//            
-//            do{
-//                let res = try JSONDecoder().decode(MoviesModel.self, from: data)
-//                
-//                if let movies = res.results{
-//                    
-//                    var movieArra = movies
-//                    var index = 0
-//                    
-//                    for movie in movieArra{
-//                        
-//                        let newimageurl = imagebaseURL + (movie.posterPath ?? "")
-//                        let newBackImage = imagebaseURL + (movie.backdropPath ?? "")
-//                        movieArra[index].posterPath = newimageurl
-//                        movieArra[index].backdropPath = newBackImage
-//                        index += 1
-//                    }
-//                    
-//                    self.moviesPaginationHandler.passListAndItemTotalFromApi(list: movieArra,
-//                                                                             totalFavsFromApi: 100)
-//                }
-//                
-//            } catch {
-//                print(error)
-//            }
-//        }
-//    }
+        
+    func getMovie(by id: Int){
+        //'https://api.themoviedb.org/3/movie/movie_id?language=en-US' \
+
+        let params: [String: Any] = [
+            "api_key": NetworkConstants.apiKey,
+            "id" : id
+        ]
+        
+        RequestsHandler.shared.getMovieById(params: params) {
+            [weak self] result in
+            switch result {
+            case .success(let movie):
+                
+                var newMovie = movie
+                let newimageurl = NetworkConstants.baseImageUrl + (movie.posterPath ?? "")
+                let newBackImage = NetworkConstants.baseImageUrl + (movie.backdropPath ?? "")
+                newMovie.posterPath = newimageurl
+                newMovie.backdropPath = newBackImage
+               
+                self?.movieDetails = newMovie
+            case .failure:
+                // Handle the failure case if needed
+                break
+            }
+        }
+    }
     
     func displayDataInTheView(){
         

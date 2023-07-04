@@ -83,7 +83,7 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
         let vc = storyboard?.instantiateViewController(withIdentifier: "details") as! DetailsViewController
         
         
-        vc.movieDetails = moviesPaginationHandler.innerList[indexPath.row]
+        vc.movieId = moviesPaginationHandler.innerList[indexPath.row].id
         navigationController?.pushViewController(vc, animated: true)
         
     }

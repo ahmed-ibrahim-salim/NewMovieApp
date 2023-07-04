@@ -139,8 +139,8 @@
 		EF9FA8D22A54B0FE0035EB33 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EF9FA8DB2A54B1210035EB33 /* NetworkConstants.swift */,
 				EF9FA8D92A54B11C0035EB33 /* Parser.swift */,
+				EF9FA8DB2A54B1210035EB33 /* NetworkConstants.swift */,
 				EF9FA8D72A54B1170035EB33 /* Routers.swift */,
 				EF9FA8D52A54B1120035EB33 /* Network.swift */,
 				EF9FA8D32A54B10A0035EB33 /* Requests.swift */,
