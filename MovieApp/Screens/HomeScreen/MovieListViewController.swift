@@ -106,66 +106,48 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
+// MARK: Network
 extension MovieListViewController{
     
     func getMovies(page: Int = 1){
-        
-        let apiKey = "80adae09b523d3037018900367438854"
-        
-        let baseURL = "https://api.themoviedb.org/3/movie/"
-        let imagebaseURL = "https://image.tmdb.org/t/p/w500/"
-        
-        guard let url = URL(string: "\(baseURL)popular?api_key=\(apiKey)&page=\(page)") else {
-#if DEBUG
-            print("invalid url, please check url")
-#endif
-            return
-        }
-        
-        let headers: HTTPHeaders = [
-            "Accept": "application/json"
+
+        let params: [String: Any] = [
+            "api_key": NetworkConstants.apiKey,
+            "page": page
         ]
         
-#if DEBUG
-        print("Request headers",headers)
-#endif
-        
-        AF.request(url,
-                   method: .get,
-                   encoding: URLEncoding.default,
-                   headers: headers)
-        .responseDecodable(of: MoviesModel.self) {
-            
-            response in
-            guard let data = response.data else {return}
-            
-            do{
-                let res = try JSONDecoder().decode(MoviesModel.self, from: data)
-                
-                if let movies = res.results{
-                    
-                    var movieArra = movies
+        RequestsHandler.shared.getPopularMovies(params: params) {
+            [weak self] result in
+            switch result {
+            case .success(let moviesModel):
+                if let moviesModelData = moviesModel.results {
+
+                    var movieArra = moviesModelData
                     var index = 0
                     
                     for movie in movieArra{
                         
-                        let newimageurl = imagebaseURL + (movie.posterPath ?? "")
-                        let newBackImage = imagebaseURL + (movie.backdropPath ?? "")
+                        let newimageurl = NetworkConstants.baseImageUrl + (movie.posterPath ?? "")
+                        let newBackImage = NetworkConstants.baseImageUrl + (movie.backdropPath ?? "")
                         movieArra[index].posterPath = newimageurl
                         movieArra[index].backdropPath = newBackImage
-                        print(newimageurl)
                         index += 1
                     }
                     
-                    self.moviesPaginationHandler.passListAndItemTotalFromApi(list: movieArra,
-                                                                             totalFavsFromApi: 100)
+                    self?.moviesPaginationHandler.passListAndItemTotalFromApi(list: movieArra,
+                                                                              totalFavsFromApi: 100)
+                } else {
+                    print("Response has no data")
                 }
-                
-            } catch {
-                print(error)
+            case .failure:
+                // Handle the failure case if needed
+                break
             }
         }
     }
 }
+
+
+
 
 
