@@ -23,6 +23,9 @@
 		EF9FA8D82A54B1170035EB33 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9FA8D72A54B1170035EB33 /* Routers.swift */; };
 		EF9FA8DA2A54B11C0035EB33 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9FA8D92A54B11C0035EB33 /* Parser.swift */; };
 		EF9FA8DC2A54B1210035EB33 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9FA8DB2A54B1210035EB33 /* NetworkConstants.swift */; };
+		EF9FA8DE2A54C2390035EB33 /* DeeplinkingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9FA8DD2A54C2390035EB33 /* DeeplinkingHandler.swift */; };
+		EF9FA8E12A54C2D60035EB33 /* HomeScreenDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9FA8E02A54C2D60035EB33 /* HomeScreenDeepLink.swift */; };
+		EF9FA8E32A54C6C60035EB33 /* MovieDetailsDeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9FA8E22A54C6C60035EB33 /* MovieDetailsDeepLinkHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		EF9FA8D72A54B1170035EB33 /* Routers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routers.swift; sourceTree = "<group>"; };
 		EF9FA8D92A54B11C0035EB33 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		EF9FA8DB2A54B1210035EB33 /* NetworkConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		EF9FA8DD2A54C2390035EB33 /* DeeplinkingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkingHandler.swift; sourceTree = "<group>"; };
+		EF9FA8E02A54C2D60035EB33 /* HomeScreenDeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenDeepLink.swift; sourceTree = "<group>"; };
+		EF9FA8E22A54C6C60035EB33 /* MovieDetailsDeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsDeepLinkHandler.swift; sourceTree = "<group>"; };
 		F290BC4BD6F89877E86D26B4 /* Pods_MovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,6 +120,7 @@
 				D9B9BB2529B6148200F68997 /* Info.plist */,
 				D9B9BB2029B6148200F68997 /* Assets.xcassets */,
 				EF9FA8D22A54B0FE0035EB33 /* Network */,
+				EF9FA8DF2A54C2B50035EB33 /* DeepLinking */,
 				D96A1F1529B62B1000DD502D /* Screens */,
 			);
 			path = MovieApp;
@@ -147,6 +154,16 @@
 				D96A1F1229B61D0700DD502D /* NetworkModels */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		EF9FA8DF2A54C2B50035EB33 /* DeepLinking */ = {
+			isa = PBXGroup;
+			children = (
+				EF9FA8DD2A54C2390035EB33 /* DeeplinkingHandler.swift */,
+				EF9FA8E02A54C2D60035EB33 /* HomeScreenDeepLink.swift */,
+				EF9FA8E22A54C6C60035EB33 /* MovieDetailsDeepLinkHandler.swift */,
+			);
+			path = DeepLinking;
 			sourceTree = "<group>";
 		};
 		EFE535922A54699300F540CD /* HomeScreen */ = {
@@ -279,9 +296,12 @@
 				D919A50829BD2C6400287149 /* PaginationHandler.swift in Sources */,
 				D9B9BB1829B6147F00F68997 /* AppDelegate.swift in Sources */,
 				D96A1F1429B61D1C00DD502D /* MoviesModel.swift in Sources */,
+				EF9FA8E12A54C2D60035EB33 /* HomeScreenDeepLink.swift in Sources */,
 				D9B9BB1A29B6147F00F68997 /* SceneDelegate.swift in Sources */,
 				EF9FA8D62A54B1120035EB33 /* Network.swift in Sources */,
+				EF9FA8DE2A54C2390035EB33 /* DeeplinkingHandler.swift in Sources */,
 				EF9FA8D82A54B1170035EB33 /* Routers.swift in Sources */,
+				EF9FA8E32A54C6C60035EB33 /* MovieDetailsDeepLinkHandler.swift in Sources */,
 				EF9FA8D42A54B10B0035EB33 /* Requests.swift in Sources */,
 				D96A1F1C29B62C5A00DD502D /* MovieListTableViewCell.swift in Sources */,
 				D96A1F1829B62B7D00DD502D /* DetailsViewController.swift in Sources */,
@@ -445,7 +465,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TryMovieApp;
+				PRODUCT_BUNDLE_IDENTIFIER = TryMovieApp.ahmed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -477,7 +497,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TryMovieApp;
+				PRODUCT_BUNDLE_IDENTIFIER = TryMovieApp.ahmed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

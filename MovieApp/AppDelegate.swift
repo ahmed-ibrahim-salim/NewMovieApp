@@ -10,6 +10,19 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    lazy var deeplinkCoordinator: DeeplinkCoordinatorProtocol = {
+            return DeeplinkCoordinator(handlers: [
+                HomeScreenDeeplinkHandler(rootController: rootController),
+                MovieDetailsDeeplinkHandler(rootController: rootController)
+            ])
+    }()
+//
+    var rootController: UIViewController? {
+        return window?.rootViewController
+    }
+//
+    var window: UIWindow?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         return true
@@ -25,4 +38,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+//// deep linking for app delegate
+extension AppDelegate {
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+        
+        print(url.absoluteString)
+        return deeplinkCoordinator.handleURL(url)
 
+//        return true
+    }
+    
+}

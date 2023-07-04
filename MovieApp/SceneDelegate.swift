@@ -9,6 +9,19 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    
+    lazy var deeplinkCoordinator: DeeplinkCoordinatorProtocol = {
+            return DeeplinkCoordinator(handlers: [
+                HomeScreenDeeplinkHandler(rootController: rootController),
+                MovieDetailsDeeplinkHandler(rootController: rootController)
+            ])
+    }()
+//
+    var rootController: UIViewController? {
+        // mock the navigation
+        return window?.rootViewController
+    }
+    
     var window: UIWindow?
 
 
@@ -20,4 +33,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 }
+// deep linking for scene delegate
+extension SceneDelegate {
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
 
+        guard let firstUrl = URLContexts.first?.url else {
+            return
+        }
+
+        print(firstUrl.absoluteString)
+        deeplinkCoordinator.handleURL(firstUrl)
+
+    }
+}
