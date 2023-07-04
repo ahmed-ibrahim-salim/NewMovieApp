@@ -39,9 +39,9 @@ class MovieListTableViewCell: UITableViewCell {
     
     func configure(with data: Movie){
         self.movieTitle.text = data.title
-        self.movieRating.text = "⭐️ \(data.rating ?? 0.0) / 10"
-        self.movieGenres.text = data.genres?.joined(separator: ", ")
-        guard let imgURL = URL(string: data.mediumCoverImage ?? "" ) else { return  }
+        self.movieRating.text = "⭐️ \(data.popularity ?? 0.0) / 10"
+        self.movieGenres.text = data.originalLanguage ?? ""
+        guard let imgURL = URL(string: data.posterPath ?? "" ) else { return  }
          let recource = ImageResource(downloadURL: imgURL)
 
         self.movieImage.kf.setImage(with: recource)

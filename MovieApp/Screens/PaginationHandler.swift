@@ -30,7 +30,7 @@ class MoviesPageWithPagination{
     }
 
     func getData(){
-        controller.getMovies(currentPageNum)
+        controller.getMovies(page: currentPageNum)
     }
     
     

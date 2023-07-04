@@ -30,29 +30,29 @@ class DetailsViewController: UIViewController {
     
     @IBAction func watchMovieBtnPressed(_ sender: Any) {
         
-        if let url = URL(string: movieDetails?.url ?? "www.google.com") {
-            UIApplication.shared.open(url)
-        } else {
-            print("url is not correct")
-        }
+//        if let url = URL(string: movieDetails?.url ?? "www.google.com") {
+//            UIApplication.shared.open(url)
+//        } else {
+//            print("url is not correct")
+//        }
         
     }
     
     func displayDataInTheView(){
         
-        title = movieDetails?.titleEnglish
-        movieYear.text = "\(movieDetails?.year ?? 2000)"
-        movieGeners.text = movieDetails?.genres?.joined(separator: ", ")
+        title = movieDetails?.title
+        movieYear.text = "\(movieDetails?.releaseDate ?? "2000")"
+        movieGeners.text = movieDetails?.originalLanguage ?? "EN"
         
-        if movieDetails?.descriptionFull == "" {
+        if movieDetails?.overview == "" {
             movieFullDescription.text = " This movie didn't have a Description , \n GOOGLE it if you need the Description"
         }else {
-            movieFullDescription.text = movieDetails?.descriptionFull
+            movieFullDescription.text = movieDetails?.overview
         }
         
-        watchBtn.setTitle(movieDetails?.url, for: .normal)
+        watchBtn.setTitle("Watch now", for: .normal)
         
-        guard let imgURL = URL(string: movieDetails?.backgroundImageOriginal ?? "" ) else { return}
+        guard let imgURL = URL(string: movieDetails?.backdropPath ?? "" ) else { return}
         
         let recource = ImageResource(downloadURL: imgURL)
         
