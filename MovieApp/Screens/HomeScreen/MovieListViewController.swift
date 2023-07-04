@@ -10,13 +10,12 @@ import Alamofire
 
 class MovieListViewController: UIViewController {
     
-    
     // MARK: IBOutlets.
     @IBOutlet weak var tableView: UITableView!
     
     var moviesPaginationHandler: MoviesPageWithPagination!
     let searchController = UISearchController(searchResultsController: nil)
-    var filteredMovies :[Movie] = []
+    var filteredMovies: [Movie] = []
     
     
     // MARK: View Lifecycle
@@ -27,22 +26,11 @@ class MovieListViewController: UIViewController {
         moviesPaginationHandler = MoviesPageWithPagination(controller: self)
         
         setupTableView()
-
-        setupSearchingController()
         
         getMovies()
         
     }
-    
-    private func setupSearchingController(){
-        // searching
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search in Movies"
-        searchController.searchResultsUpdater = self
-    }
-    
+
     // table
     private func setupTableView(){
         tableView.delegate = self
@@ -67,7 +55,8 @@ class MovieListViewController: UIViewController {
                 
         AF.request(urlWithPage,
                    method: .get,
-                   encoding: JSONEncoding.default).responseDecodable(of: Movies.self) {
+                   encoding: JSONEncoding.default)
+        .responseDecodable(of: Movies.self) {
             
             (response) in
             guard let data = response.data else {return}
@@ -83,17 +72,6 @@ class MovieListViewController: UIViewController {
                 print(error)
             }
         }
-    }
-}
-
-
-
-extension MovieListViewController: UISearchResultsUpdating{
-    func updateSearchResults(for searchController: UISearchController) {
-        filteredMovies = moviesPaginationHandler.innerList.filter({ (movie) ->Bool in
-            return movie.title? .lowercased().contains(searchController.searchBar.text!.lowercased()) ?? true
-        })
-        tableView.reloadData()
     }
 }
 

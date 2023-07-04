@@ -28,7 +28,6 @@ class DetailsViewController: UIViewController {
         
     }
     
-    // MARK: IBActions.
     @IBAction func watchMovieBtnPressed(_ sender: Any) {
         
         if let url = URL(string: movieDetails?.url ?? "www.google.com") {

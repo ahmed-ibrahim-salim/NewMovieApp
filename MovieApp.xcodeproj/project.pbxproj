@@ -61,6 +61,7 @@
 		D96A1F1529B62B1000DD502D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D919A50729BD2C6400287149 /* PaginationHandler.swift */,
 				EFE535922A54699300F540CD /* HomeScreen */,
 				D96A1F1729B62B7D00DD502D /* DetailsViewController.swift */,
 			);
@@ -130,7 +131,6 @@
 			children = (
 				D96A1F1A29B62C3E00DD502D /* Cell */,
 				D9B9BB1B29B6147F00F68997 /* MovieListViewController.swift */,
-				D919A50729BD2C6400287149 /* PaginationHandler.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
