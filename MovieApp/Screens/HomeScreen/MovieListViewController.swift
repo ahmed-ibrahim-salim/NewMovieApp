@@ -91,15 +91,12 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         cell.alpha = 0
-        cell.transform = CGAffineTransform(translationX: 0, y:cell.contentView.frame.width)
         
         
         UIView.animate(withDuration: 0.5,
                        delay: 0.1 * Double(indexPath.row),
                        animations: {
             
-            cell.transform = CGAffineTransform(translationX: cell.contentView.frame.width,
-                                               y: cell.contentView.frame.height)
             cell.alpha = 1
             
         })
