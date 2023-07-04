@@ -119,7 +119,6 @@ extension MovieListViewController{
 #if DEBUG
             print("invalid url, please check url")
 #endif
-            
             return
         }
         
@@ -145,7 +144,7 @@ extension MovieListViewController{
                 
                 if let movies = res.results{
                     
-                    var movieArra: [Movie] = movies
+                    var movieArra = movies
                     var index = 0
                     
                     for movie in movieArra{
@@ -154,13 +153,13 @@ extension MovieListViewController{
                         let newBackImage = imagebaseURL + (movie.backdropPath ?? "")
                         movieArra[index].posterPath = newimageurl
                         movieArra[index].backdropPath = newBackImage
-                        
+                        print(newimageurl)
                         index += 1
                     }
                     
                     self.moviesPaginationHandler.passListAndItemTotalFromApi(list: movieArra,
                                                                              totalFavsFromApi: 100)
-                }                
+                }
                 
             } catch {
                 print(error)
