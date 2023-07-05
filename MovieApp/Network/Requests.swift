@@ -22,8 +22,11 @@ class RequestsHandler: RequestHandlerProtocol {
 
     func getPopularMovies(params: [String : Any],
                              completionHandler: @escaping (AFResult<MoviesModel>) -> ()){
-        
+#if DEBUG
+
         print(params, "getPopularMovies")
+#endif
+
         network?.performGet(Routers.getPopularMovies(para: params),
                             MoviesModel.self){
             response in
@@ -35,7 +38,11 @@ class RequestsHandler: RequestHandlerProtocol {
     func getMovieById(params: [String : Any],
                              completionHandler: @escaping (AFResult<Movie>) -> ()){
         
+#if DEBUG
+
         print(params, "getMovieById")
+#endif
+
         network?.performGet(Routers.movieById(para: params),
                             Movie.self){
             response in

@@ -29,7 +29,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
    
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        
     }
 
 }
@@ -40,9 +39,11 @@ extension SceneDelegate {
         guard let firstUrl = URLContexts.first?.url else {
             return
         }
+#if DEBUG
 
         print(firstUrl.absoluteString)
         deeplinkCoordinator.handleURL(firstUrl)
+#endif
 
     }
 }

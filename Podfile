@@ -6,6 +6,8 @@ target 'MovieApp' do
   use_frameworks!
   source 'https://github.com/CocoaPods/Specs.git'
   
+  pod 'Firebase/Messaging', '9.4.0'
+
   
   pod 'Alamofire'
   pod 'SwiftyJSON'

@@ -18,6 +18,7 @@
 		D9B9BB1F29B6147F00F68997 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9B9BB1D29B6147F00F68997 /* Main.storyboard */; };
 		D9B9BB2129B6148200F68997 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9B9BB2029B6148200F68997 /* Assets.xcassets */; };
 		D9B9BB2429B6148200F68997 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9B9BB2229B6148200F68997 /* LaunchScreen.storyboard */; };
+		EF413AF72A561EE500EF77F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF413AF62A561EE500EF77F2 /* GoogleService-Info.plist */; };
 		EF9FA8D42A54B10B0035EB33 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9FA8D32A54B10A0035EB33 /* Requests.swift */; };
 		EF9FA8D62A54B1120035EB33 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9FA8D52A54B1120035EB33 /* Network.swift */; };
 		EF9FA8D82A54B1170035EB33 /* Routers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9FA8D72A54B1170035EB33 /* Routers.swift */; };
@@ -43,6 +44,8 @@
 		D9B9BB2029B6148200F68997 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9B9BB2329B6148200F68997 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9B9BB2529B6148200F68997 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF413AF52A561E9700EF77F2 /* MovieApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MovieApp.entitlements; sourceTree = "<group>"; };
+		EF413AF62A561EE500EF77F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF9FA8D32A54B10A0035EB33 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		EF9FA8D52A54B1120035EB33 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		EF9FA8D72A54B1170035EB33 /* Routers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routers.swift; sourceTree = "<group>"; };
@@ -113,6 +116,8 @@
 		D9B9BB1629B6147F00F68997 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				EF413AF62A561EE500EF77F2 /* GoogleService-Info.plist */,
+				EF413AF52A561E9700EF77F2 /* MovieApp.entitlements */,
 				D9B9BB1729B6147F00F68997 /* AppDelegate.swift */,
 				D9B9BB1929B6147F00F68997 /* SceneDelegate.swift */,
 				D9B9BB2229B6148200F68997 /* LaunchScreen.storyboard */,
@@ -236,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9B9BB2429B6148200F68997 /* LaunchScreen.storyboard in Resources */,
+				EF413AF72A561EE500EF77F2 /* GoogleService-Info.plist in Resources */,
 				D9B9BB2129B6148200F68997 /* Assets.xcassets in Resources */,
 				D9B9BB1F29B6147F00F68997 /* Main.storyboard in Resources */,
 			);
@@ -450,9 +456,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MovieApp/MovieApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AJ7MW2XDAX;
+				DEVELOPMENT_TEAM = NG9767362J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MovieApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -465,7 +472,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TryMovieApp.ahmed;
+				PRODUCT_BUNDLE_IDENTIFIER = TryMovieApp.ahmed.medo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -482,9 +489,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MovieApp/MovieApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AJ7MW2XDAX;
+				DEVELOPMENT_TEAM = NG9767362J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MovieApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -497,7 +505,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TryMovieApp.ahmed;
+				PRODUCT_BUNDLE_IDENTIFIER = TryMovieApp.ahmed.medo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

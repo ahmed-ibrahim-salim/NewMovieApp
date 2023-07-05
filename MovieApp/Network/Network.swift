@@ -29,10 +29,10 @@ class NetworkConnectionGeneric: NetworkConnectionGenericProtocol{
         
         #if DEBUG
         print(request.urlRequest?.headers, "request headers")
-        #endif
+        
         
         print(manager.sessionConfiguration.headers.dictionary, "session headers")
-        
+        #endif
         manager.request(request).responseDecodable(of: type){
             response in
 #if DEBUG
@@ -58,7 +58,11 @@ class NetworkConnectionGeneric: NetworkConnectionGenericProtocol{
 #endif
             do {
                 let data = try JSONDecoder.decodeFromData(type, data: data)
+#if DEBUG
+
                 print(JSON(response.data ?? [:]), "astrix data after parsing")
+#endif
+
                 return .success(data)
             } catch {
 #if DEBUG
